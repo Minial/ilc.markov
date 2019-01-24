@@ -10,6 +10,10 @@ public class MarkovWord {
 	public MarkovWord() {
 
 	}
+        
+        public MarkovWord(String dataWord, int n){
+            data = (ArrayList<MarkovData>)processString(dataWord,n);
+        }
 
 	public double getSimilarity(String wordOne, String wordTwo, int n) {
 		List<MarkovData> res1 = processString(wordOne, n);
@@ -33,7 +37,7 @@ public class MarkovWord {
 			}
 		}
 
-		return res;
+		return res;//nombre de mot en commun
 	}
 
 	int union(List<MarkovData> One, List<MarkovData> Two) {
@@ -55,7 +59,7 @@ public class MarkovWord {
 			}
 		}
 
-		return t.size();
+		return t.size();//retourne taille si fusion 2 liste (avec enlevement mot commun)
 	}
 
 	List<MarkovData> processString(String c, int n) {
